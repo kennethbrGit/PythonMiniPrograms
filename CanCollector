@@ -1,0 +1,92 @@
+#Kenneth Robinson
+#Simple Can Collector Program
+
+'''
+    Decomposition:
+    1. Load the list of cans collected. 
+    2. Determine the number of functions.
+    3. Calculate the total.
+    4. Calculate the average.
+    5. Calculate the total number of classrooms.
+    6. Find the grade the collected the most cans.
+    7. Print all calculations to the screen. 
+
+
+    Main():
+        houses the list of cans each grade collected
+        Passes the cans list to the function Calculations
+        Passes the cans list to the method Highest_Cans_Collected
+        Prints the values returned from the Calculations function to the screen
+
+    Calculations(cans):
+        This function takes the cans list as a parameter to do calculations on. 
+        The cans go through a for loop to find the total and the number of classrooms
+        The average is calculated from the total and number of classrooms
+        The total, average, and the number of classrooms are returned back to main()
+
+    Highest_Cans_Collected(cans):
+        This function accepts the cans list as a parameter
+        There is a for loop that sorts through the list of cans and finds the highest number and saves the index of that number
+        That index correlates to a grade
+        the grade that collected the most cans is printed to the screen
+    
+'''
+def Calculations(cans):
+    total = int()
+    average = float()
+    classrooms = int()
+
+    classrooms = 0
+    # loop to collect the total number of cans 
+    for i in range(len(cans)):
+        total = total + cans[i]
+        classrooms = classrooms + 1
+
+    #formula to calculate the average number of cans collected
+    average = total/classrooms
+    #returning the calculated variables back to main
+    return total, average, classrooms
+
+
+def Highest_Cans_Collected(cans):
+    highest = 0
+    highest_index = 0
+    index = 0
+
+    #For loop to search for the highest number and save the index
+    for index in range(len(cans)):
+        if cans[index] > highest:
+            #Saves the highest 
+            highest = cans[index]
+            #Saves the index of the highest 
+            highest_index = index
+
+    #saving the highest to the variable highest
+    HighestCollector = highest
+    #Saves the day of the highest collecting classroom the index
+    Classroom_higest_Collected = highest_index
+
+    print("\nGrade " + str(Classroom_higest_Collected) + " was the highest collector with a total of " + str(HighestCollector) + " cans collected.")
+
+
+def main():
+    #Declare variables
+    cans = []
+    total_cans_collected = int()
+    average_cans_collected  =float()
+    number_of_classrooms= int()
+    cans = [248, 379, 189, 457, 274, 532, 279, 296, 359]
+
+    #Call function with cans passed in as argument
+    total_cans_collected, average_cans_collected, number_of_classrooms = Calculations(cans)
+
+    #Print functions to display results of calculations
+    print("\nThe total amount of cans collected: " + str(total_cans_collected))
+    print("The average amount of cans collected: "+ str(round(average_cans_collected,2)))
+    print("The number of classrooms that collected the average number of cans: " + str(number_of_classrooms))
+
+    #Call method that will find the grade the collected the most cans
+    Highest_Cans_Collected(cans)
+
+
+main()
