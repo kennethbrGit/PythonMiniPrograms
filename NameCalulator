@@ -1,0 +1,58 @@
+#Kenneth Robinson
+#Simple Name Calculator Application
+
+
+
+info = {'A':'1','B':'2', 'C':'3','D':'4','E':'5','F':'6','G':'7','H':'8','I':'9',
+'J':'10','K':'11','L':'12','M':'13','N':'14','O':'15','P':'16','Q':'17','R':'18',
+'S':'19','T':'20','U':'21','V':'22','W':'23','X':'24','Y':'25','Z':'26', ' ':0}
+
+x=1;
+while x!=0:
+    name = input('Enter your name to use Calculator: ')
+    K=0;
+    Name_Count = 0
+    Count_space = 0
+    new_name=name.upper()
+
+    try:
+        for index in new_name:
+            
+            print(index,'-> ',info[index])
+            
+            K = int(info[index]) + K
+
+        print("Your name =: " + str(K))
+
+        
+    
+    except:
+        print('You entered Numbers or Special Characters! Try again:')
+
+    #tryleft= 5-x
+    #print("You have {} trys left".format('Unlimited'))
+    
+    str_new_name = str(new_name)
+    print(str_new_name)
+    for a in str_new_name:
+        if (a.isspace()) == True:
+            Count_space +=1
+        Name_Count +=1
+    
+    #print(Count_space)
+    #print(Name_Count)
+    Final_name_count = Name_Count - Count_space
+            #print(Name_Count)
+    
+    print("Your name has {} characters in it".format(Final_name_count))
+      
+    print("would you like to try again? 'y' for yes 'n' for no")
+    try:
+        answer = input()
+        if answer =='y':
+            x = 1
+        elif answer =='n':
+            x = 0
+
+    except:
+        print("Please enter a 'y' for yes or an 'n' for No")
